@@ -10,6 +10,7 @@ int main(int argc, char **argv)
 
     while (ros::ok())
     {
+        tracker.Update();
         ros::spinOnce();
         rate.sleep();
     }

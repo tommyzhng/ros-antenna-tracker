@@ -129,9 +129,9 @@ add_library(${PROJECT_NAME}
    src/tracker.cpp
 )
 
-add_executable(${PROJECT_NAME}_node src/tracker_node.cpp)
-target_link_libraries(${PROJECT_NAME}_node ${PROJECT_NAME} ${catkin_LIBRARIES})
-add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_executable(tracker_node src/tracker_node.cpp)
+target_link_libraries(tracker_node  ${PROJECT_NAME} ${catkin_LIBRARIES})
+add_dependencies(tracker_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 
 ## Add cmake target dependencies of the library

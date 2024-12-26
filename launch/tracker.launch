@@ -1,4 +1,7 @@
 <launch>
-    <node pkg="ros_antenna_tracker" type="tracker_node" name="tracker_node" output="screen">
-        <param name="antenna_longitude" value="43.781965764378675"/>
-        <param name="antenna_latitude" value="-79.46648612912144"/>
+    <node pkg="ros-antenna-tracker" type="tracker_node" name="tracker_node" output="screen">
+        <param name="antenna_latitude" value="47.397888224831476"/>
+        <param name="antenna_longitude" value="8.545819680510272"/>
+        <param name="antenna_initial_heading" value="180"/>
+    </node>
+</launch>
