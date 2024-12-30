@@ -44,6 +44,17 @@ void Tracker::CalculateDroneAngle()
 
     droneAngle_ = atan2(deltaY, deltaX) * (180 / M_PI);   
     droneAngle_ = std::fmod((droneAngle_ + 360), 360); // convert to 0-360
+
+    antPitch = atan((droneRadLLA_.z() - antennaRadLLA_.z()) / sqrt(deltaX * deltaX + deltaY * deltaY));
+    antPitch = antPitch * (180 / M_PI);
+    if (antPitch < 0)
+    {
+        antPitch = 0;
+    } else if (antPitch > 90)
+    {
+        antPitch = 90;
+    }
+
     Tracker::CalculateServoCommand();
 }
 
@@ -56,7 +67,7 @@ void Tracker::PublishAngles()
 {
     geometry_msgs::Point angleMsg;
     angleMsg.x = servoDelta_;
-    angleMsg.y = droneAngle_;
+    angleMsg.y = antPitch;
     angleMsg.z = 0.0;
     anglesPub_.publish(angleMsg);
 }

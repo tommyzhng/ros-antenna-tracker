@@ -18,6 +18,7 @@ void AntennaTracker::angleCb(const geometry_msgs::Point &msg)
 void AntennaTracker::UpdateAngle()
 {
     panServo_.write(int(90+angleMsg_.x));
+    tiltServo_.write(int(angleMsg_.y));
 }
 
 // Outside the class

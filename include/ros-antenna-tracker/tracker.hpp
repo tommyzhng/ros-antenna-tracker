@@ -29,6 +29,7 @@ private:
     double servoDelta_{0};
     double droneAngle_{0};
     double antAngle_{0}; // this is in NED from the compass
+    double antPitch{0};
 
     ros::Subscriber dronePositionSub_;
     ros::Publisher anglesPub_;

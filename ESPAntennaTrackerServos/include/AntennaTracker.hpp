@@ -20,7 +20,7 @@ private:
     Servo panServo_;
     Servo tiltServo_;
     int panPin_{15};
-    int tiltPin_{16};
+    int tiltPin_{2};
 };
 
 #endif // ANTENNA_TRACKER_HPP
