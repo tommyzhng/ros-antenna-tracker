@@ -10,6 +10,8 @@ project(ros-antenna-tracker)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  sensor_msgs
+  mavros_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -117,12 +119,20 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  include/ros-antenna-tracker
 )
 
+find_package(Eigen3 REQUIRED)
+
 ## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/ros-antenna-tracker.cpp
-# )
+add_library(${PROJECT_NAME}
+   src/tracker.cpp
+)
+
+add_executable(tracker_node src/tracker_node.cpp)
+target_link_libraries(tracker_node  ${PROJECT_NAME} ${catkin_LIBRARIES})
+add_dependencies(tracker_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
